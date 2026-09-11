@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="pt-BR">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -482,13 +482,76 @@ button,input{font:inherit;color:inherit}
 
       <div style="display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:14px;margin-top:clamp(40px,6vh,70px);padding-top:20px;border-top:1px solid rgba(201,162,75,0.18);font-family:'JetBrains Mono',ui-monospace,monospace;font-size:10px;letter-spacing:0.15em;text-transform:uppercase;color:#8A8A8A">
         <span>© 2026 Tech.SitesPB — Pablo Victor Santos Borges</span>
-        <span>Zero Trust · Cloud · DevSecOps</span>
+        <div style="display:flex;flex-wrap:wrap;align-items:center;gap:18px">
+          <a href="#lgpd" onClick="{{ openLgpd }}" data-cursor="ler" style="color:#8A8A8A;letter-spacing:0.15em" style-hover="color:#E0BE72">Privacidade & LGPD</a>
+          <span>Zero Trust · Cloud · DevSecOps</span>
+        </div>
       </div>
     </div>
     <div aria-hidden="true" style="max-width:1440px;margin:0 auto;padding:0 24px;overflow:hidden">
       <div style="font-family:Satoshi,'General Sans',system-ui,sans-serif;font-weight:900;letter-spacing:-0.04em;font-size:clamp(54px,15.5vw,240px);line-height:0.78;color:transparent;-webkit-text-stroke:1px rgba(201,162,75,0.32);white-space:nowrap;margin-bottom:-0.16em;user-select:none">TECH.SITESPB</div>
     </div>
   </footer>
+
+  <sc-if value="{{ cookieOpen }}" hint-placeholder-val="{{ false }}">
+    <div role="region" aria-label="Aviso de cookies" style="position:fixed;z-index:80;left:max(16px,env(safe-area-inset-left));right:max(16px,env(safe-area-inset-right));bottom:max(16px,env(safe-area-inset-bottom));display:flex;justify-content:flex-start;pointer-events:none">
+      <div style="pointer-events:auto;width:100%;max-width:410px;background:rgba(16,16,16,0.94);backdrop-filter:blur(14px);border:1px solid rgba(201,162,75,0.26);padding:20px 20px 18px;box-shadow:0 24px 60px rgba(0,0,0,0.55)">
+        <div style="display:flex;align-items:center;gap:9px;margin-bottom:11px;font-family:'JetBrains Mono',ui-monospace,monospace;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:#C9A24B">
+          <span style="width:16px;height:1px;background:#C9A24B"></span><span>Cookies · LGPD</span>
+        </div>
+        <p style="margin:0 0 15px;font-family:Inter,system-ui,sans-serif;font-size:13px;line-height:1.6;color:#C9C9C9;text-wrap:pretty">Usamos cookies essenciais para o funcionamento do site e, com seu consentimento, cookies de análise para entender o desempenho das páginas. Você decide.</p>
+        <div style="display:flex;flex-wrap:wrap;gap:10px;align-items:center">
+          <button type="button" onClick="{{ acceptCookies }}" data-cursor="aceitar" style="flex:1 1 auto;min-height:44px;padding:0 20px;border:none;background:#C9A24B;color:#0A0A0A;font-family:Inter,system-ui,sans-serif;font-size:13px;font-weight:600;letter-spacing:0.02em;cursor:pointer;transition:background .3s ease" style-hover="background:#E0BE72">Aceitar todos</button>
+          <button type="button" onClick="{{ rejectCookies }}" data-cursor="recusar" style="flex:1 1 auto;min-height:44px;padding:0 18px;border:1px solid rgba(201,162,75,0.3);background:transparent;color:#F5F5F5;font-family:Inter,system-ui,sans-serif;font-size:13px;cursor:pointer;transition:border-color .3s ease,color .3s ease" style-hover="border-color:#C9A24B;color:#E0BE72">Só essenciais</button>
+        </div>
+        <a href="#lgpd" onClick="{{ openLgpd }}" data-underline="1" style="display:inline-block;margin-top:13px;font-family:'JetBrains Mono',ui-monospace,monospace;font-size:10px;letter-spacing:0.15em;text-transform:uppercase;color:#8A8A8A" style-hover="color:#E0BE72">Política de privacidade</a>
+      </div>
+    </div>
+  </sc-if>
+
+  <sc-if value="{{ lgpdOpen }}" hint-placeholder-val="{{ false }}">
+    <div role="dialog" aria-modal="true" aria-label="Política de Privacidade e LGPD" id="lgpd" style="position:fixed;inset:0;z-index:90;display:flex;align-items:center;justify-content:center;padding:20px;background:rgba(6,6,6,0.82);backdrop-filter:blur(8px)">
+      <div style="position:relative;width:100%;max-width:720px;max-height:82dvh;overflow:auto;background:#101010;border:1px solid rgba(201,162,75,0.24);padding:clamp(26px,4vw,44px)">
+        <button type="button" onClick="{{ closeLgpd }}" aria-label="Fechar" data-cursor="fechar" style="position:absolute;top:14px;right:14px;width:44px;height:44px;display:flex;align-items:center;justify-content:center;border:1px solid rgba(201,162,75,0.24);background:transparent;color:#F5F5F5;font-size:18px;line-height:1;cursor:pointer;transition:border-color .3s ease,color .3s ease" style-hover="border-color:#C9A24B;color:#E0BE72">×</button>
+        <div style="font-family:'JetBrains Mono',ui-monospace,monospace;font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:#C9A24B;margin-bottom:14px">Política de Privacidade · Lei nº 13.709/2018</div>
+        <h2 style="margin:0 0 22px;font-family:Satoshi,'General Sans',system-ui,sans-serif;font-weight:600;letter-spacing:-0.03em;line-height:1.05;font-size:clamp(26px,4vw,38px);color:#F5F5F5">Seus dados, tratados com o mesmo rigor da nossa infraestrutura.</h2>
+        <div style="display:flex;flex-direction:column;gap:22px;font-family:Inter,system-ui,sans-serif;font-size:14px;line-height:1.75;color:#C9C9C9;text-wrap:pretty">
+          <div>
+            <div style="font-family:'JetBrains Mono',ui-monospace,monospace;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:#E0BE72;margin-bottom:8px">01 — Controlador</div>
+            <p style="margin:0">Pablo Victor Santos Borges (Tech.SitesPB), São Paulo/BR. Contato do encarregado de dados: <a href="mailto:contato@techsitespb.com" data-underline="1" style="color:#E0BE72">contato@techsitespb.com</a>.</p>
+          </div>
+          <div>
+            <div style="font-family:'JetBrains Mono',ui-monospace,monospace;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:#E0BE72;margin-bottom:8px">02 — Dados coletados</div>
+            <p style="margin:0">Dados que você envia voluntariamente por formulário, e-mail ou WhatsApp (nome, e-mail, telefone, descrição do projeto) e dados técnicos de navegação (páginas visitadas, dispositivo, origem do acesso) coletados de forma agregada.</p>
+          </div>
+          <div>
+            <div style="font-family:'JetBrains Mono',ui-monospace,monospace;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:#E0BE72;margin-bottom:8px">03 — Finalidade e base legal</div>
+            <p style="margin:0">Responder a solicitações de orçamento e prestar o serviço contratado (execução de contrato, art. 7º, V), medir o desempenho do site (consentimento, art. 7º, I) e cumprir obrigações legais e fiscais (art. 7º, II).</p>
+          </div>
+          <div>
+            <div style="font-family:'JetBrains Mono',ui-monospace,monospace;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:#E0BE72;margin-bottom:8px">04 — Cookies</div>
+            <p style="margin:0">Cookies essenciais mantêm o site funcionando e não podem ser desativados. Cookies de análise só são ativados após o seu “Aceitar todos”. Sua escolha fica guardada no seu próprio navegador e pode ser alterada a qualquer momento limpando os dados do site.</p>
+          </div>
+          <div>
+            <div style="font-family:'JetBrains Mono',ui-monospace,monospace;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:#E0BE72;margin-bottom:8px">05 — Compartilhamento</div>
+            <p style="margin:0">Não vendemos dados. Compartilhamos apenas com provedores de infraestrutura necessários à operação (hospedagem, CDN, e-mail), sob contrato e com transferência internacional protegida por cláusulas contratuais.</p>
+          </div>
+          <div>
+            <div style="font-family:'JetBrains Mono',ui-monospace,monospace;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:#E0BE72;margin-bottom:8px">06 — Segurança e retenção</div>
+            <p style="margin:0">Aplicamos princípios Zero Trust: TLS em todo o tráfego, acesso mínimo necessário, logs monitorados e backup criptografado. Dados de contato são mantidos enquanto houver relação comercial e pelos prazos legais aplicáveis; depois são eliminados.</p>
+          </div>
+          <div>
+            <div style="font-family:'JetBrains Mono',ui-monospace,monospace;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:#E0BE72;margin-bottom:8px">07 — Seus direitos</div>
+            <p style="margin:0">Você pode solicitar confirmação, acesso, correção, anonimização, portabilidade ou eliminação dos seus dados, revogar o consentimento e se opor a tratamentos, nos termos do art. 18 da LGPD. Respondemos em até 15 dias pelo e-mail acima.</p>
+          </div>
+        </div>
+        <div style="margin-top:28px;padding-top:18px;border-top:1px solid rgba(201,162,75,0.18);display:flex;flex-wrap:wrap;gap:14px;align-items:center;justify-content:space-between;font-family:'JetBrains Mono',ui-monospace,monospace;font-size:10px;letter-spacing:0.15em;text-transform:uppercase;color:#8A8A8A">
+          <span>Atualizada em setembro de 2026</span>
+          <button type="button" onClick="{{ closeLgpd }}" style="min-height:44px;padding:0 22px;border:none;background:#C9A24B;color:#0A0A0A;font-family:Inter,system-ui,sans-serif;font-size:13px;font-weight:600;text-transform:none;letter-spacing:0;cursor:pointer" style-hover="background:#E0BE72">Entendi</button>
+        </div>
+      </div>
+    </div>
+  </sc-if>
 </div>
 
 </x-dc>
@@ -509,6 +572,8 @@ class Component extends DCLogic {
       isDesktop: w >= 768,
       touch: touch,
       menuOpen: false,
+      cookieOpen: false,
+      lgpdOpen: false,
       open: 0,
       counters: this.baseCounters().map(c => ({ ...c, display: c.zero })),
       termLines: [],
@@ -546,6 +611,7 @@ class Component extends DCLogic {
 
   componentDidMount() {
     this.tickClock();
+    this.initConsent();
     this.clockTimer = setInterval(this.tickClock, 1000);
     window.addEventListener('resize', this.onResize, { passive: true });
     window.addEventListener('scroll', this.onScroll, { passive: true });
@@ -1039,6 +1105,17 @@ class Component extends DCLogic {
     { label: 'Contato', href: '#contato' }
   ];
 
+  setCookie(v) {
+    try { localStorage.setItem('tspb-consent', JSON.stringify({ v: v, at: new Date().toISOString() })); } catch (e) {}
+    this.setState({ cookieOpen: false });
+  }
+
+  initConsent() {
+    let has = false;
+    try { has = !!localStorage.getItem('tspb-consent'); } catch (e) {}
+    if (!has) setTimeout(() => this.setState({ cookieOpen: true }), 1600);
+  }
+
   /* ---------- render values ---------- */
 
   renderVals() {
@@ -1070,6 +1147,12 @@ class Component extends DCLogic {
       loadBarRef: this.ref('loadBar'),
 
       minusOne: -1,
+      cookieOpen: s.cookieOpen,
+      lgpdOpen: s.lgpdOpen,
+      acceptCookies: () => this.setCookie('all'),
+      rejectCookies: () => this.setCookie('essential'),
+      openLgpd: (e) => { if (e && e.preventDefault) e.preventDefault(); this.setState({ lgpdOpen: true }); },
+      closeLgpd: () => this.setState({ lgpdOpen: false }),
       showLoader: (this.props.preloader ?? true) ? s.showLoader : false,
       progress: s.progress,
       clock: s.clock,
@@ -1123,5 +1206,8 @@ class Component extends DCLogic {
 }
 
 </script>
+</body>
+</html>
+
 </body>
 </html>
