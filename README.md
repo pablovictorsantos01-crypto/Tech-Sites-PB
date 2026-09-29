@@ -15,7 +15,10 @@ Site institucional one-page (preto profundo + dourado metálico).
 index.html            Página principal (abre direto no navegador)
 support.js            Runtime do componente (obrigatório, mesma pasta do index)
 image-slot.js         Componente de imagem
-vercel.json           Headers de segurança e cache
+vercel.json           Segurança (CSP, Permissions-Policy, COOP, HSTS), cache e redirect www
+consent-default.js    Consent Mode v2: tudo negado até o visitante aceitar
+sitemap.xml           Mapa do site (enviar no Google Search Console)
+robots.txt            Regras para buscadores
 assets/
   logo-emblema.png    Emblema do header / preloader
   logo.jpg
@@ -51,7 +54,9 @@ Também funciona em Netlify, Hostinger ou qualquer hospedagem estática — bast
 5. Planos: Essencial, Profissional e Completo (botão "Pedir prévia via WhatsApp")
 6. Suporte (3 níveis)
 7. Tráfego pago — simulador de anúncios
-8. Contato final + WhatsApp flutuante
+8. Contato final (techsitespb@gmail.com) + WhatsApp flutuante
+
+No celular/tablet (<1100px) o header mostra só o emblema + botão de menu (tela cheia, com link ativo e CTA do WhatsApp).
 
 ## Privacidade (LGPD) — já incluso
 - Banner de cookies (Aceitar / Rejeitar / Personalizar) após o preloader.
@@ -59,6 +64,18 @@ Também funciona em Netlify, Hostinger ou qualquer hospedagem estática — bast
 - Políticas de Privacidade, de Cookies e Termos de Uso: rodapé ou `#privacidade`, `#politica-cookies`, `#termos`, `#gerenciar-cookies`.
 - Google Consent Mode v2 começa negado por padrão.
 - **GA4 / Meta Pixel:** no `index.html`, preencha `GA_ID = ''` e `PIXEL_ID = ''`. Eles só carregam depois do consentimento.
+
+## SEO
+- Título, descrição, canonical, idioma pt-BR, Open Graph/Twitter (imagem `assets/og-image.png`, 1200×630).
+- Dados estruturados (JSON-LD): empresa, planos com preços e FAQ.
+- Conteúdo principal também em HTML estático (`<noscript>`) para buscadores e prévias de link.
+- Após publicar: cadastrar no Google Search Console, enviar `sitemap.xml` e criar o Perfil da Empresa no Google.
+
+## Segurança
+- CSP: só carrega scripts do próprio site, React (unpkg, com SRI), Google e Meta. `'unsafe-eval'` é exigido pelo runtime do componente.
+- Ao adicionar um serviço externo novo (chat, mapa, pagamento), inclua o domínio dele no CSP do `vercel.json`.
+- Câmera, microfone, localização e sensores bloqueados; janela isolada (COOP).
+- Ative verificação em 2 etapas em Vercel, GoDaddy, GitHub e Gmail, e o bloqueio de transferência do domínio.
 
 ## Pendências antes do lançamento
 - Revisar os textos legais com um advogado.
